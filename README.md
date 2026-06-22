@@ -15,8 +15,7 @@ I wrote this repository to serve as my semester portfolio for Data Structures an
 *   File I/O: Reading/processing files with proper memory handling.
 *   Structures & Graphs: Managing student records and traversing linked lists.
 *   Dynamic Memory: Efficient memory allocation/deallocation in complex scenarios.
-*   Advanced Logic: Custom `memcpy`, `strcmp`, and stack-based solutions without library functions.
-*   Practice Files: Over 50+ C practice files demonstrating consistent coding standards.
+*   Practice Files: Over 350+ C practice files demonstrating consistent coding standards.
 
 ## Why I Built the AI Organizer
 
