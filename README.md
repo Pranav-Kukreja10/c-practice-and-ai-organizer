@@ -115,4 +115,13 @@ You can tweak the script by modifying the constants at the top of `C_Files_Organ
 * `MODEL_NAME`: Change this to `llama3:8b`, `mistral`, or any other local model you prefer.
 * `DEBUG_RAW`: Set to `True` to print the raw, unparsed JSON output directly from the LLM for debugging.
 
-```
+
+Unorganized Directory:
+
+<img width="667" height="877" alt="image" src="https://github.com/user-attachments/assets/17a9e8f3-0780-406e-b997-253e9d49a5a7" />
+
+Organized Directory:
+
+<img width="618" height="334" alt="image" src="https://github.com/user-attachments/assets/e0177b4c-b231-485a-8156-bf18015274ff" />
+
+<img width="1046" height="244" alt="image" src="https://github.com/user-attachments/assets/1a717200-ee9e-43db-b044-485a9d4397af" />
