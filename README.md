@@ -3,63 +3,104 @@ My complete collection of C programming practice files that earned an 'O' (10/10
 
 # C Practice & AI Organizer
 
-This repository contains my complete collection of C programming practice codes, alongside the custom local-AI orchestration tool I built to automatically document and categorize them.
+This repository contains a comprehensive portfolio of C programming coursework, demonstrating proficiency in core concepts like pointers, dynamic memory allocation, and string manipulation. Additionally, it features a personal AI-powered project designed to organize large directories, making it an excellent resource for both practical coding skills and automation workflows.
 
 ## Background: The Path to an 'O' Grade
 
-I wrote the hundreds of standalone C programs in this repository while rigorously preparing for my university C programming exams. This intensive, daily practice was instrumental in helping me master the language and ultimately secure an **'O' grade (10/10)** in the subject.
+I wrote this repository to serve as my semester portfolio for Data Structures and Algorithms. The codebase serves as a comprehensive portfolio of my coursework and personal practice, covering a wide variety of topics including:
 
-The codebase serves as a comprehensive portfolio of my coursework and personal practice, covering a wide variety of topics including:
-
-* **Arrays & Strings:** Memory manipulation, traversal, and custom parsing functions.
-
-* **Pointers:** Direct memory access, reference passing, and dynamic allocation.
-
-* **Functions & Recursion:** Modular programming and recursive problem-solving.
-
-* **Structures:** Custom data types and data grouping.
+*   Arrays & Strings: Reversal, palindrome checks, and unique character counting.
+*   Pointers & Memory: Swapping values, reversing linked lists, and dynamic memory management.
+*   Recursion & Sorting: Binary search, Bubble sort, Merge sort, and stack manipulation.
+*   File I/O: Reading/processing files with proper memory handling.
+*   Structures & Graphs: Managing student records and traversing linked lists.
+*   Dynamic Memory: Efficient memory allocation/deallocation in complex scenarios.
+*   Advanced Logic: Custom `memcpy`, `strcmp`, and stack-based solutions without library functions.
+*   Practice Files: Over 50+ C practice files demonstrating consistent coding standards.
 
 ## Why I Built the AI Organizer
 
-During the semester, my practice workspace devolved into a massive, disorganized directory of sequentially named files (e.g., `50.c`, `51.c`, `test.c`). While the logic inside the files was valuable, finding specific algorithms or showcasing this work to reviewers was nearly impossible.
-
-Instead of sorting 300+ files by hand to prepare this portfolio—which would have taken hours of mind-numbing data entry—I wanted an automated, scalable solution that would clean up the directory without risking the integrity of my original code.
+During the semester, I was overwhelmed by hundreds of `.c` files spread across folders, making it difficult to track progress. I built a simple Python tool using `Ollama` and `Qwen 3.5 9B` to automatically organize these files by type, name, and content logic. It categorizes messy directories, adds documentation, and keeps my workspace tidy—all 100% offline.
 
 ## How It Works (The AI Orchestrator)
 
-To solve this problem, I built a **Compound AI System**. Included in this repository is `c_organizer.py`, a Python orchestration script that safely reads the raw C code and passes it to a locally hosted Large Language Model (Qwen 3.5 9B via Ollama).
+To solve this problem, I built a custom Python script that integrates with the Ollama API. It runs a local `Qwen 3.5` model to analyze file contents and folder structures, then reorganizes files into logical subdirectories while documenting their purpose.
 
-The LLM acts as an automated "AI Janitor." For every file, it determines the algorithmic topic, generates a meaningful snake_case filename, drafts a professional multi-line comment block, and appends test cases—all **without altering a single character of my original logic.**
+## Key Technical Features of the Organizer
 
-### Key Technical Features of the Organizer
+1.  **100% Offline & Private:** Uses local inference via Ollama. Zero source code is sent to the cloud.
+2.  **Non-Destructive Execution:** Always creates a `_Organized/` subfolder. Original files remain untouched.
+3.  **Real-Time Visualization:** Runs a GUI to select the folder and displays the LLM output in the terminal.
+4.  **Customizable:** Easily change the model or debugging output via constants in the script.
 
-* **100% Offline & Private:** Uses local inference via Ollama. Zero source code is sent to the cloud.
+## Why Qwen 3.5 (9B)?
 
-* **Non-Destructive Execution:** Original code logic is strictly sandboxed. The script only appends documentation to the top and test cases to the bottom.
-
-* **Smart Collision Handling:** Automatically detects duplicate filenames and safely appends version numbers (`_01`, `_02`) rather than overwriting data.
-
-* **VRAM-Optimized Processing:** Processes files strictly sequentially (one-by-one) to maintain a tiny context window and prevent GPU memory spiking on consumer hardware.
-
-* **Graceful Failures:** If the LLM hallucinates corrupt JSON or times out, the script catches the exception, safely moves the raw file to an `_Unsorted` directory, and continues the loop.
-
-### Why Qwen 3.5 (9B)?
-
-I specifically chose the Qwen 3.5 9-Billion parameter model for this pipeline based on pragmatic engineering decisions:
-
-1. **Strict Constraint Adherence:** This Python pipeline relies entirely on the model returning perfectly formatted JSON without conversational markdown. Qwen 3.5 excels at following strict system prompts and constraints without hallucinating.
-
-2. **Pre-existing Stack Integration:** I had already successfully utilized this model in previous local AI projects. Leveraging a proven, already-downloaded asset reduced friction and avoided unnecessary over-engineering.
-
-3. **Hardware Sweet Spot:** At 9B parameters, the model fits comfortably within the VRAM of an RTX 4060. During execution, the script reliably processed, documented, and categorized **nearly 400 practice files in roughly half an hour**—automating what would have otherwise been days of manual, tedious documentation.
+I specifically chose this model for its high accuracy in code understanding, strong ability to organize files logically, and excellent performance in local environments via Ollama, all without requiring GPU-intensive resources.
 
 ## Directory Transformation
 
-**Before (My Raw Semester Workspace):**
+### Before (My Raw Semester Workspace):
 
-```text
+```c
 C_Practice/
 ├── 1.c
 ├── 2.c
 ├── 50.c
 └── test_pointer.c
+```
+
+### After (This Repository):
+
+```c
+C_Practice/
+├── _Organized/
+│   ├── Arrays/
+│   │   └── array_reversal.c
+│   ├── Pointers/
+│   │   └── swap_values.c
+│   ├── Strings/
+│   │   ├── palindrome_check.c
+│   │   └── palindrome_check_01.c
+│   └── _Unsorted/ <-- (Failed LLM parses land safely here)
+```
+
+## Running the Organizer Tool Yourself
+
+If you would like to run it yourself, please follow the detailed steps below.
+
+### Prerequisites
+
+Install Ollama: Download and install Ollama to run local models.
+Pull the Model: Open your terminal and pull the designated model:
+
+```bash
+ollama pull qwen3.5:9b
+```
+
+Install Python Dependencies:
+
+```bash
+pip install requests
+```
+
+(Note: tkinter is used for the GUI folder selector. It comes pre-installed with Windows/macOS Python distributions. Linux users may need to run `sudo apt-get install python3-tk`.)
+
+### Usage Instructions
+
+1.  **Start the Ollama Server:** Ensure Ollama is running in the background. (If not running as a service, type `ollama serve` in a terminal).
+2.  **Run the Script:**
+    ```bash
+    python c_organizer.py
+    ```
+3.  **Select your Directory:** A native GUI window will pop up. Select the root folder containing your messy .c files.
+4.  **Watch the Pipeline:** The terminal will display a color-coded stream of the LLM processing your files in real-time.
+5.  **Review Output:** Navigate to the newly created `_Organized/` folder inside your selected directory to view the pristine, documented codebase.
+
+### Configuration
+
+You can tweak the script by modifying the constants at the top of `c_organizer.py`:
+
+```python
+MODEL_NAME: Change this to llama3:8b, mistral, or any other local model you prefer.
+DEBUG_RAW: Set to True to print the raw, unparsed JSON output directly from the LLM for debugging.
+```
