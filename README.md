@@ -1,10 +1,6 @@
-# c-practice-and-ai-organizer
-My complete collection of C programming practice files that earned an 'O' (10/10) university grade, alongside a custom local-LLM orchestration script built to automatically document and categorize them.
-
 # C Practice & AI Organizer
 
-This repository contains my complete collection of C programming practice codes, alongside the custom local-AI orchestration tool I built to automatically document and categorize them.
-
+My complete collection of C programming practice files that earned an 'O' (10/10) university grade, alongside a custom local-LLM orchestration script built to automatically document and categorize them.
 ## Background: The Path to an 'O' Grade
 
 I wrote the hundreds of standalone C programs in this repository while rigorously preparing for my university C programming exams. This intensive, daily practice was instrumental in helping me master the language and ultimately secure an **'O' grade (10/10)** in the subject.
@@ -18,13 +14,13 @@ The codebase serves as a comprehensive portfolio of my coursework and personal p
 
 ## Why I Built the AI Organizer
 
-During the semester, my practice workspace devolved into a massive, disorganized directory of sequentially named files (e.g., `50.c`, `51.c`, `test.c`). While the logic inside the files was valuable, finding specific algorithms or showcasing this work to reviewers was nearly impossible.
+During the semester, my practice workspace devolved into a massive, disorganized directory of sequentially named files (e.g., `10.c`, `practice.c`, `test.c`). While the logic inside the files was valuable, finding specific algorithms or showcasing this work to reviewers was nearly impossible.
 
 Instead of sorting 300+ files by hand to prepare this portfolio—which would have taken hours of mind-numbing data entry—I wanted an automated, scalable solution that would clean up the directory without risking the integrity of my original code.
 
 ## How It Works (The AI Orchestrator)
 
-To solve this problem, I built a **Compound AI System**. Included in this repository is `c_organizer.py`, a Python orchestration script that safely reads the raw C code and passes it to a locally hosted Large Language Model (Qwen 3.5 9B via Ollama).
+To solve this problem, I built a **Compound AI System**. Included in this repository is `C_Files_Organizer.py`, a Python orchestration script that safely reads the raw C code and passes it to a locally hosted Large Language Model (Qwen 3.5 9B via Ollama).
 
 The LLM acts as an automated "AI Janitor." For every file, it determines the algorithmic topic, generates a meaningful snake_case filename, drafts a professional multi-line comment block, and appends test cases—all **without altering a single character of my original logic.**
 
@@ -104,7 +100,7 @@ If you would like to test the Python automation script on your own directory of 
 2. **Run the Script:**
 
 ```bash
-   python c_organizer.py
+   python C_Files_Organizer.py
    
 
 ```
@@ -115,8 +111,7 @@ If you would like to test the Python automation script on your own directory of 
 
 ### Configuration
 
-You can tweak the script by modifying the constants at the top of `c_organizer.py`:
-
+You can tweak the script by modifying the constants at the top of `C_Files_Organizer.py`
 * `MODEL_NAME`: Change this to `llama3:8b`, `mistral`, or any other local model you prefer.
 * `DEBUG_RAW`: Set to `True` to print the raw, unparsed JSON output directly from the LLM for debugging.
 
